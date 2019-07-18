@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2.4</title>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+
+<div class="center-full-div">
+	<div class="header">
+	</div>
+	<h1>Frequency table view</h1>
+
+<div class="freq_table">
+<table>
+	<tr>
+		<th></th>
+		<th><div class="cube bluecube"></th>
+		<th><div class="cube yellowcube"></th>
+	</tr>
+	<tr>
+		<th><div class="ball redball"></th>
+		<!-- red, blue -->
+		<th id="rb1">randomizing</th> 
+		<!-- red, yellow -->
+		<th id="ry1">randomizing</th>
+	</tr>
+	<tr>
+		<th><div class="ball greenball"></th>
+		<!-- green, blue -->
+		<th id="gb1">randomizing</th>
+		<!-- green, yellow -->
+		<th id="gy1">randomizing</th>
+	</tr>
+</table>
+<div class="label">A</div>
+</div>
+
+<div class="freq_table">
+<table>
+	<tr>
+		<th></th>
+		<th><div class=" cube bluecube"></div></th>
+		<th><div class="cube yellowcube"></th>
+	</tr>
+	<tr>
+		<th><div class="ball redball"></div></th>
+		<!-- red, blue -->
+		<th id="rb2">randomizing</th> 
+		<!-- red, yellow -->
+		<th id="ry2">randomizing</th>
+	</tr>
+	<tr>
+		<th><div class="ball greenball"></div></th>
+		<!-- green, blue -->
+		<th id="gb2">randomizing</th>
+		<!-- green, yellow -->
+		<th id="gy2">randomizing</th>
+	</tr>
+</table>
+<div class="label">B</div>
+</div>
+
+<div class="freq_table">
+<table>
+	<tr>
+		<th></th>
+		<th><div class="cube bluecube"></th>
+		<th><div class="cube yellowcube"></th>
+	</tr>
+	<tr>
+		<th><div class="ball redball"></th>
+		<!-- red, blue -->
+		<th id="rb3">randomizing</th> 
+		<!-- red, yellow -->
+		<th id="ry3">randomizing</th>
+	</tr>
+	<tr>
+		<th><div class="ball greenball"></th>
+		<!-- green, blue -->
+		<th id="gb3">randomizing</th>
+		<!-- green, yellow -->
+		<th id="gy3">randomizing</th>
+	</tr>
+</table>
+<div class="label">C</div>
+</div>
+
+<div class="button">Get a new crate</div>
+</div>
+
+</body>
+<script type="text/javascript" src=script1.js></script>
+<script>
+//Create random simulation crate contents for 14 boxes
+
+simulation();
+
+refresh = document.querySelector('.button');
+refresh.onclick=function() {
+	simulation();
+}
+
+function simulation() {
+
+var freq_table = [];
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+number_boxes = getRandom(6,9);
+
+predict(number_boxes);
+gettable();
+console.log(freq_table);
+
+function cleartable() {
+	var freq_table = [];
+}
+
+function predict(num_boxes){
+	ball_colors = ["#ED254B", "#C7FFD4"]; //red,green
+	cube_colors = ["#3FA9F5", "#FBC83B"]; //blue, yellow
+	for (i=0;i<num_boxes;i++){
+		var ball_assignment = Math.floor((Math.random() * 2) + 0);
+		var cube_assignment = Math.floor((Math.random() * 2) + 0);
+		var ball_color = ball_colors[ball_assignment];
+		var cube_color= cube_colors[cube_assignment];
+		var label = Math.floor((Math.random() * 3) + 1);
+		if(label==1){
+			label="A";
+		} else if (label==2){
+			label="B";
+		} else if (label==3){
+			label="C";
+		}
+		freq_table.push({
+			label: label,
+			ball: ball_color,
+			cube: cube_color
+		});
+	}
+}
+
+
+function gettable() {
+	var oneboxes = freq_table.filter(function(d){return d.label == "A"});
+	var twoboxes = freq_table.filter(function(d){return d.label == "B"});
+	var threeboxes = freq_table.filter(function(d){return d.label == "C"});
+	getrb(oneboxes);
+	getrb(twoboxes);
+	getrb(threeboxes);
+	getry(oneboxes);
+	getry(twoboxes);
+	getry(threeboxes);
+	getgb(oneboxes);
+	getgb(twoboxes);
+	getgb(threeboxes);
+	getgy(oneboxes);
+	getgy(twoboxes);
+	getgy(threeboxes);
+
+	function getrb(array){
+		var rb = array.filter(function(d){return d.ball=="#ED254B" && d.cube=="#3FA9F5"});
+		if(array==oneboxes){
+			document.querySelector('#rb1').innerHTML=rb.length;
+		} else if (array==twoboxes) {
+			document.querySelector('#rb2').innerHTML=rb.length;
+		} else {
+			document.querySelector('#rb3').innerHTML=rb.length;
+		}
+	}
+
+	function getry(array){
+		var ry = array.filter(function(d){return d.ball=="#ED254B" && d.cube=="#FBC83B"});
+		if(array==oneboxes){
+			document.querySelector('#ry1').innerHTML=ry.length;
+		} else if (array==twoboxes){
+			document.querySelector('#ry2').innerHTML=ry.length;
+		} else {
+			document.querySelector('#ry3').innerHTML=ry.length;
+		}
+	}
+
+	function getgb(array){
+		var gb = array.filter(function(d){return d.ball=="#C7FFD4" && d.cube=="#3FA9F5"});
+		if(array==oneboxes){
+			document.querySelector('#gb1').innerHTML=gb.length;
+		} else if (array==twoboxes){
+			document.querySelector('#gb2').innerHTML=gb.length;
+		} else {
+			document.querySelector('#gb3').innerHTML=gb.length;
+		}
+	}
+
+	function getgy(array){
+		var ry = array.filter(function(d){return d.ball=="#C7FFD4" && d.cube=="#FBC83B"});
+		if(array==oneboxes){
+			document.querySelector('#gy1').innerHTML=ry.length;
+		} else if (array==twoboxes){
+			document.querySelector('#gy2').innerHTML=ry.length;
+		} else {
+			document.querySelector('#gy3').innerHTML=ry.length;
+		}
+	}
+}
+}
+
+
+
+
+</script>
+</html>

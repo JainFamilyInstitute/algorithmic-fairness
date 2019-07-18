@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title</title>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+</head>
+<style>
+body, html {
+	font-family: 'Playfair Display', serif;
+	top:0;
+	left:0;
+	width:100%;
+	height:100vh;
+}
+body {
+	background-color:white;
+}
+.content {
+	position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin:auto;
+    vertical-align:middle;
+    text-align:left;
+    letter-spacing:-0.05em;
+    font-size:2em;
+}
+h1 {
+	font-weight:400;
+}
+h2 {
+	font-family: 'Inconsolata', monospace;
+	line-height:0.6em;
+	text-align:center;
+	font-size:0.4em;
+	font-weight:400;
+	letter-spacing:0em;
+}
+#logo {
+	width:10%;
+	position:absolute;
+	top:5%;
+	left:5%;
+}
+@media screen and (max-width:767px){
+	h1 {
+		padding:10%;
+	}
+	#logo {
+		width:30%;
+		left:10%;
+	}
+}
+@media screen and (max-width:320px){
+	h1 {
+		font-size:1em;
+	}
+}
+
+</style>
+<body>
+<img id="logo" src="assets/logo.png">
+<div class="content">
+<h1>Is It Impossible To Be Fair?</h1>
+<h2>Written by Cosmo Grant</h2>
+<h2>Web & interactive design by Emily Chu</h2>
+</div>
+</body>
+</html>

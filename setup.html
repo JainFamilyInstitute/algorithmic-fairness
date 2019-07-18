@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Setup</title>
+   <meta name="viewport" content="width=device-width">
+   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
+   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+   <style>
+body, html {
+  top:0;
+  left:0;
+  margin:0;
+  animation: fadeIn 0.25s;
+}
+.button {
+  font-family:'Nunito Sans', sans-serif;
+  font-size:0.8em;
+  font-weight:100;
+  margin:auto;
+  width:20%;
+  padding:1.5%;
+  border-radius:1em;
+  line-height:0.8em;
+  border: 0.05em solid #4873EB;
+  color:#4873EB;
+  cursor:pointer;
+  text-align:center;
+}
+.button:hover {
+  background-color:#4873EB;
+  color:white;
+}
+@keyframes fadeIn{
+  0% {
+    transform:translateX(5em);
+    opacity:0;
+  }
+  100% {
+    transform:translateX(0em);
+    opacity:1;
+  }
+}
+
+   </style>
+</head>
+<body>
+
+<div class="crate"></div>
+</body>
+
+<script type="text/javascript" src=script1.js></script>
+<script>
+var crate = document.querySelector('.crate');
+var body = document.querySelector('body');
+d3.select("body").selectAll("custom-box").remove();
+
+for (i=0;i<6;i++){
+  box = document.createElement('custom-box');
+  box.setAttribute('id',i);
+  crate.append(box);
+  lid = document.createElement('lid');
+  lid.setAttribute("class","lid");
+  label = document.createElement('h1');
+  shuffle_times = Math.floor((Math.random() * 10) + 1);
+  number = Math.floor((Math.random() * shuffle_times) + 1)
+  if(number==1){
+    label.innerHTML = "A";
+  } else if (number==2){
+    label.innerHTML = "B";
+  } else if (number==3){
+    label.innerHTML = "C";
+  } else if (number==4){
+    label.innerHTML = "D";
+  } else if (number==5){
+    label.innerHTML = "E";
+  } else if (number==6){
+    label.innerHTML = "F";
+  } else if (number==7){
+    label.innerHTML = "G";
+  } else if (number==8){
+    label.innerHTML = "H";
+  } else if (number==9){
+    label.innerHTML = "I";
+  } else if (number==10){
+    label.innerHTML = "J";
+  }
+  target = document.getElementById(i);
+  target.append(lid);
+  target.append(label);
+  ball = document.createElement('div');
+  ball.setAttribute("class","ball");
+  ball_colors = ["#ED254B", "#C0F0D5"];
+  cube_colors = ["#3FA9F5", "#FBC83B"];
+  ball_color = Math.floor((Math.random() * 2) + 0);
+  ball.style.backgroundColor = ball_colors[ball_color];
+  target.append(ball)
+  cube = document.createElement('div');
+  cube.setAttribute("class","cube");
+  cube_color = Math.floor((Math.random() * 2) + 0);
+  cube.style.backgroundColor = cube_colors[cube_color];
+  target.append(cube)
+}
+
+refresh = document.createElement('div');
+refresh.setAttribute("class","button");
+refresh.innerHTML = "Get a new crate";
+body.append(refresh);
+refresh.addEventListener('click',function(){
+  location.reload();
+})
+
+var boxes = document.getElementsByTagName("custom-box");
+for(i=0;i<boxes.length;i++){
+  boxes[i].onmouseover = function() {
+    id = this.id;
+    target = document.getElementById(id);
+    target.style.boxShadow="0em 0.5em 2em #ED958E";
+    target.querySelector('.ball').style.opacity="1";
+    target.querySelector('.cube').style.opacity="1";
+    target.querySelector('.ball').style.transform="translate(-0.5em, -3em) scale(1.5) ";
+    target.querySelector('.cube').style.transform="translate(0.5em, -3em) scale(1.5) rotate(-15deg)";
+    target.querySelector('lid').style.width="80%";
+    target.querySelector('lid').style.transform="rotate(-120deg)";
+  }
+  boxes[i].onmouseout = function() {
+    id = this.id;
+    target = document.getElementById(id);
+     target.style.boxShadow="none";
+    target.querySelector('.ball').style.opacity="0";
+    target.querySelector('.cube').style.opacity="0";
+    target.querySelector('.ball').style.transform="translate(0, 0)";
+    target.querySelector('.cube').style.transform="translate(0, 0) rotate(0deg)";
+    target.querySelector('lid').style.width="95%";
+    target.querySelector('lid').style.transform="rotate(-15deg)";
+  }
+  boxes[i].onclick=function() {
+    no = this.id;
+    console.log("click:" + no);
+  }
+}
+</script>
+</html>
