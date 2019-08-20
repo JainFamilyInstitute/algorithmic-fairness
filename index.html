@@ -70,6 +70,11 @@ label {
 /*  scroll-snap-align: start;*/
   animation: fadeIn 1s ease-in-out;
 }
+.section_auto {
+  width:100%;
+  height:fit-content;
+  animation: fadeIn 1s ease-in-out;
+}
 .text-section {
   opacity:0;
   width:90%;
@@ -716,82 +721,14 @@ tr:hover {
   Crate-and-boxes problems model the problems we're interested in: predicting whether someone will commit a crime, industrial quality control, job applications, and so on. So we can use them to think about whether there exist decision rules in these practical problems with all four fairness properties.
   <br><br>
   An example:
-  <br><br>
-  <div style="display:inline-block;width:30%;padding-right:2%;">
-  <table>
-    <thead>
-    <tr>
-    <th style="text-align: left;"></th>
-    <th style="text-align: right;width:50%">blue</th>
-    <th style="text-align: right;width:100%">yellow</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td style="text-align: left;">red</td>
-    <td style="text-align: right;">1</td>
-    <td style="text-align: right;">3</td>
-    </tr>
-    <tr>
-    <td style="text-align: left;">green</td>
-    <td style="text-align: right;">0</td>
-    <td style="text-align: right;">0</td>
-    </tr>
-    </tbody>
-  </table>
-  <label style="display:block;">label: A</label>
-  </div>
+  </p>
+</div>
 
-  <div style="display:inline-block;width:30%;padding-right:2%;">
-  <table >
-    <thead>
-    <tr>
-    <th style="text-align: left;"></th>
-    <th style="text-align: right;width:50%">blue</th>
-    <th style="text-align: right;width:100%">yellow</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td style="text-align: left;">red</td>
-    <td style="text-align: right;">12</td>
-    <td style="text-align: right;">2</td>
-    </tr>
-    <tr>
-    <td style="text-align: left;">green</td>
-    <td style="text-align: right;">0</td>
-    <td style="text-align: right;">0</td>
-    </tr>
-    </tbody>
-  </table>
-  <label style="display:block;">label: B</label>
-  </div>
- 
-  <div style="display:inline-block;width:30%;padding-right:2%;">
-  <table>
-    <thead>
-    <tr>
-    <th style="text-align: left;"></th>
-    <th style="text-align: right;width:50%">blue</th>
-    <th style="text-align: right;width:100%">yellow</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td style="text-align: left;">red</td>
-    <td style="text-align: right;">0</td>
-    <td style="text-align: right;">0</td>
-    </tr>
-    <tr>
-    <td style="text-align: left;">green</td>
-    <td style="text-align: right;">5</td>
-    <td style="text-align: right;">2</td>
-    </tr>
-    </tbody>
-  </table>
-   <label style="display:block;">label: C</label>
-  </div>
-  <br><br>
+<div class="section_auto">
+  <iframe src="5.html" width=1280 height=auto frameborder=0 scrolling=no onload="resizeIframe(this)"></iframe>
+</div>
+
+<div class="text-section">
   <p>
   For this crate-and-boxes problem, there exists a decision rule with all four properties. You can guess what it is: if $A$ predict red, if $B$ predict red, if $C$ predict green.
   <br><br>
@@ -811,82 +748,13 @@ tr:hover {
   <p>
   Now let's look at another kind of example:
   </p>
-  <br><br>
-  <div style="display:inline-block;width:30%;padding-right:2%;">
-  <table>
-    <thead>
-    <tr>
-    <th style="text-align: left;"></th>
-    <th style="text-align: right;width:50%">blue</th>
-    <th style="text-align: right;width:100%">yellow</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td style="text-align: left;">red</td>
-    <td style="text-align: right;">1</td>
-    <td style="text-align: right;">1</td>
-    </tr>
-    <tr>
-    <td style="text-align: left;">green</td>
-    <td style="text-align: right;">4</td>
-    <td style="text-align: right;">4</td>
-    </tr>
-    </tbody>
-  </table>
-  <label style="display:block;">label: A</label>
-  </div>
+</div>
 
-  <div style="display:inline-block;width:30%;padding-right:2%;">
-  <table >
-    <thead>
-    <tr>
-    <th style="text-align: left;"></th>
-    <th style="text-align: right;width:50%">blue</th>
-    <th style="text-align: right;width:100%">yellow</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td style="text-align: left;">red</td>
-    <td style="text-align: right;">6</td>
-    <td style="text-align: right;">1</td>
-    </tr>
-    <tr>
-    <td style="text-align: left;">green</td>
-    <td style="text-align: right;">6</td>
-    <td style="text-align: right;">5</td>
-    </tr>
-    </tbody>
-  </table>
-  <label style="display:block;">label: B</label>
-  </div>
- 
-  <div style="display:inline-block;width:30%;padding-right:2%;">
-  <table>
-    <thead>
-    <tr>
-    <th style="text-align: left;"></th>
-    <th style="text-align: right;width:50%">blue</th>
-    <th style="text-align: right;width:100%">yellow</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td style="text-align: left;">red</td>
-    <td style="text-align: right;">1</td>
-    <td style="text-align: right;">2</td>
-    </tr>
-    <tr>
-    <td style="text-align: left;">green</td>
-    <td style="text-align: right;">14</td>
-    <td style="text-align: right;">3</td>
-    </tr>
-    </tbody>
-  </table>
-   <label style="display:block;">label: C</label>
-  </div>
-  <br><br>
+<div class="section_auto">
+  <iframe src="6.html" width=1280 height=420 frameborder=0 scrolling=no onload="resizeIframe(this)"></iframe>
+</div>
+
+<div class="text-section">
   <p>
   This problem doesn't admit perfect prediction. But for it too there exist decision rules with all four properties. Here's one: if $A$ predict red, if $B$ predict red, if $C$ predict red. In other words, predict red no matter what. Here's another: predict green no matter what. These decision rules have all four fairness properties.
   </p>
@@ -1185,7 +1053,7 @@ tr:hover {
       2017.</li>
       <li>William Dieterich, Christina Mendoza, and Tim Brennan. Compas Risk
       Scales: Demonstrating Accuracy Equity and Predictive Parity.</li>
-      <li>Jon Kleinberg, Sendhil Mullainathan, and Manish Raghavan. Inherent Trade-Offs in the Fair Determination of Risk Scores. In Christos H. Papadim-itriou, editor, 8th Innovations in Theoretical Computer Science Conference, Colume 67 of Leibniz International Proceedings in Informatics, Dagstuhl, Germany, 2017.</li>
+      <li>Jon Kleinberg, Sendhil Mullainathan, and Manish Raghavan. Inherent Trade-Offs in the Fair Determination of Risk Scores. In Christos H. Papadimitriou, editor, 8th Innovations in Theoretical Computer Science Conference, Volume 67 of Leibniz International Proceedings in Informatics, Dagstuhl, Germany, 2017.</li>
     </ul>
 </div>
 
@@ -1205,12 +1073,21 @@ scroll.onclick=function() {
 w =window.innerWidth;
 h = window.innerHeight;
 function resize() {
-  iframes = document.querySelectorAll('iframe');
+  iframes = document.querySelectorAll('.section iframe');
   for(i=0;i<iframes.length;i++){
     iframes[i].width=w;
     iframes[i].height=h;
   };
 };
+
+function resizeIframe(obj) {
+  obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  iframes = document.querySelectorAll('.section_auto iframe');
+  for(i=0;i<iframes.length;i++){
+    iframes[i].width=w;
+    iframes[i].height=h;
+  };
+}
 
 resize();
 
