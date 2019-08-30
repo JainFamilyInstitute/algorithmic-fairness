@@ -225,7 +225,7 @@ custom-box {
 
 /*panels*/
 .scroll-post {
-  scroll-snap-type: x mandatory;
+/*  scroll-snap-type: x mandatory;*/
   margin-top:3%;
   margin-bottom:5%;
 /*  scroll-behavior: smooth;*/
@@ -255,7 +255,7 @@ custom-box {
 }
 .panel {
   cursor:pointer;
-  scroll-snap-align: center;
+/*  scroll-snap-align: center;*/
   width:80%;
 /*  height:60vh;*/
   box-shadow:0.05em 0.05em 1em #CCC;
